@@ -1,6 +1,10 @@
 package image
 
-import "image/color"
+import (
+	"image/color"
+
+	"github.com/RugiSerl/image/app/math"
+)
 
 // normalized color values
 type Color struct {
@@ -28,5 +32,13 @@ func (c Color) ToRGBA() color.RGBA {
 		uint8(c.B * 255),
 		uint8(c.A * 255),
 	}
+}
 
+func (c Color) Clamp() Color {
+	return Color{
+		math.Clamp(c.R, 0, 1),
+		math.Clamp(c.G, 0, 1),
+		math.Clamp(c.B, 0, 1),
+		math.Clamp(c.A, 0, 1),
+	}
 }

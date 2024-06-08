@@ -4,16 +4,9 @@ import (
 	"image"
 	"image/png"
 	"os"
-)
 
-// Init bidimensionnal slice, allocating the needed space. No need to free thanks to garbage collector.
-func InitSlice[T any](x, y int) [][]T {
-	result := make([][]T, x)
-	for i := range result {
-		result[i] = make([]T, y)
-	}
-	return result
-}
+	"github.com/RugiSerl/image/app/math"
+)
 
 func (img Image) GetDimension() image.Point {
 	return image.Point{
@@ -37,7 +30,7 @@ func LoadImage(filePath string) (Image, error) {
 	width := bounds.Dx()
 	height := bounds.Dy()
 
-	var imageMatrix Image = InitSlice[Color](width, height)
+	var imageMatrix Image = math.InitMatrix[Color](width, height)
 
 	for x := 0; x < width; x++ {
 		for y := 0; y < height; y++ {

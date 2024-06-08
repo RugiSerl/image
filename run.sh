@@ -1,0 +1,1 @@
+go run main.go && xdg-open assets/output.png

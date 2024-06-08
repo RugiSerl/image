@@ -6,10 +6,10 @@ import (
 )
 
 func Run() {
-	img, err := image.LoadImage("assets/sample.png")
+	img, err := image.LoadImage("assets/image.png")
 	if err != nil {
 		panic(err)
 	}
-	img = filter.Monochrome(img)
+	img = filter.ConvolutionFilter(img, filter.EdgeDetection())
 	img.SaveImage("assets/output.png")
 }
